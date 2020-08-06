@@ -1,0 +1,17 @@
+
+        <!-- <form #form="ngForm" (ngSubmit)="onClickSubmit(form.value)">
+        <div *ngFor="let info of formInfo.formControlDetails" class="form-group" >
+                <label for="{{info.id}}">{{info.id}}</label>
+                <input type="{{info.type}}" name="{{info.name}}" id="{{info.id}}" class="form-control" *ngIf="{{info.name}}==password" ngModel>
+        </div>
+        <div class="form-group">
+                <input type="submit" class="btn btn-outline-primary" value="{{formInfo.buttonName}}">
+        </div>
+        </form> -->
+        <form (ngSubmit)="loginUser()" [formGroup]="loginForm" novalidate class="form">
+                <input formControlName="email" type="text" class="form-control" placeholder="enter your email">
+                <input formControlName="password" type="password" class="form-control" placeholder="enter your password">
+                <button [disabled]='loginForm.invalid' class="btn btn-outline-primary">login</button>
+        </form>
+        {{loginForm.value |json}}
+        {{loginForm.status | json}}
