@@ -1,4 +1,4 @@
 <div class="container shadow-lg">   
-    <app-form  (formdata)="loginUser($event)"></app-form>
+    <app-form  (formDataEmitter)="loginUser($event)" [formTemplate]="loginFormTemplate" [button]="button"></app-form>
     <a  routerLink="/register">don't have an account?</a>
 </div>
