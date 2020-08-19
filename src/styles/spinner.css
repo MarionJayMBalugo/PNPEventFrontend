@@ -1,0 +1,100 @@
+#loader {
+  bottom: 0;
+  height: 175px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 175px;
+}
+
+#loader {
+  bottom: 0;
+  height: 175px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 175px;
+}
+
+#loader .dot {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 87.5px;
+}
+
+#loader .dot::before {
+  border-radius: 100%;
+  content: "";
+  height: 87.5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scale(0);
+  width: 87.5px;
+}
+
+#loader .dot:nth-child(n+1)::before {
+  animation: 2s linear 0.5s normal none infinite running load;
+  background: #00ff80 none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(n+2) {
+  margin-right: 100px;
+}
+
+#loader .dot:nth-child(n+2)::before {
+  animation: 2s linear 0.1s normal none infinite running load;
+  background: #00ffea none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(n+3) {
+  margin-left: 100px;
+}
+
+#loader .dot:nth-child(n+3 )::before {
+  animation: 2s linear 1s normal none infinite running load;
+  background: #00aaff none repeat scroll 0 0;
+}
+
+
+
+
+#loader .loading {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  bottom: 80px;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 180px;
+}
+
+@keyframes load {
+  100% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+}
+
+@keyframes load {
+  100% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+}
+
+.spinner-message {
+  text-align: center;
+  color:grey;
+}

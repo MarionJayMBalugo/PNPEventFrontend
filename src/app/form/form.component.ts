@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl} from '@angular/forms';
-import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -17,7 +16,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     let tempGroup={};
     this.formTemplate.forEach(element => {
-      tempGroup[element.name]=new FormControl();
+      tempGroup[element.name]=new FormControl('',element.validators);
       tempGroup[element.name].setValue(element.value);
     });
     this.formInit = new FormGroup(tempGroup);
@@ -25,4 +24,11 @@ export class FormComponent implements OnInit {
   onClickSubmit(data){
     this.formDataEmitter.emit(data.value);
   };
+  hasError(inputName){
+    return this.formInit.get(inputName).invalid && (this.formInit.get(inputName).dirty || this.formInit.get(inputName).touched);
+  }
+  listErrors(inputName){
+    console.log("errorss",this.formInit.get(inputName).errors);
+  }
+
 }

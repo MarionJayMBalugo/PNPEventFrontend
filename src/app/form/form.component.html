@@ -1,9 +1,28 @@
 
 <form (ngSubmit)="onClickSubmit(formInit)" [formGroup]="formInit" novalidate class="form">
   <div  *ngFor="let form_elem of formTemplate">
-    <label for="{{form_elem.id}}">{{form_elem.id}}</label>
-    <input formControlName="{{form_elem.name}}" type="{{form_elem.type}}" class="form-control" id="{{form_elem.id}}" value="{{form_elem.value}}">
+    <label for="{{form_elem.id}}" >{{form_elem.id}}</label>
+    <input
+    formControlName="{{form_elem.name}}" 
+    type="{{form_elem.type}}" 
+    class="form-control" 
+    [class.is-valid]="formInit.get(form_elem.name).valid"  
+    [class.is-invalid]="hasError(form_elem.name)"
+    id="{{form_elem.id}}" 
+    value="{{form_elem.value}}">
+    
+    <span *ngIf="hasError(form_elem.name)">
+      <span *ngIf="formInit.get(form_elem.name).errors.required" style="color:#b30000 ;">
+        {{form_elem.name}} is required.
+      </span>
+      <span *ngIf="formInit.get(form_elem.name).errors.email" style="color:#b30000 ;">
+        {{form_elem.name}} should be an email.
+      </span>
+      <span *ngIf="formInit.get(form_elem.name).errors.minlength" style="color:#b30000 ;">
+        must have minimum 8 characters.
+      </span>
+    </span>    
   </div>
 <br>
-<input class="btn btn-outline-primary" value="{{button}}" type="submit"/>
+<input class="btn btn-outline-primary" [disabled]="!formInit.valid" value="{{button}}" type="submit"/>
 </form> 
